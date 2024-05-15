@@ -1,5 +1,6 @@
 /**
  * Created by richard.livingston on 18/02/2017.
+ * Modified by Grant Cox (zygh0st) on 2024-05-15
  */
 'use strict';
 
@@ -30,6 +31,7 @@ function JSONTreeView(name_, value_, parent_, isRoot_){
 		readonlyWhenFiltering = parent_ ? parent_.readonlyWhenFiltering : false,
 		alwaysShowRoot = false,
 		showCount = parent_ ? parent_.showCountOfObjectOrArray : true,
+		includeType = parent_ ? parent_.includeTypeInCount : false,
 		includingRootName = true,
 		domEventListeners = [], children = [], expanded = false,
 		edittingName = false, edittingValue = false,
@@ -141,6 +143,21 @@ function JSONTreeView(name_, value_, parent_, isRoot_){
 				for (var i in children) {
 					if (typeof children[i] === 'object') {
 						children[i].showCountOfObjectOrArray = show;
+					}
+				}
+				(this.type === 'object' || this.type === 'array') && this.updateCount();
+			}
+		},
+
+		includeTypeInCount: {
+			get: function() {
+				return includeType;
+			},
+			set: function(inc) {
+				includeType = inc;
+				for (var i in children) {
+					if (typeof children[i] === 'object') {
+						children[i].includeTypeInCount = inc;
 					}
 				}
 				(this.type === 'object' || this.type === 'array') && this.updateCount();
@@ -511,12 +528,12 @@ function JSONTreeView(name_, value_, parent_, isRoot_){
 				break;
 			case 'object':
 				len = Object.keys(newValue).length;
-				str = showCount ? 'Object[' + len + ']' : (len < 1 ? '{}' : '');
+				str = showCount ? (includeType ? 'Object' : '') + '[' + len + ']' : (len < 1 ? '{}' : '');
 				break;
 
 			case 'array':
 				len = newValue.length;
-				str = showCount ? 'Array[' + len + ']' : (len < 1 ? '[]' : '');
+				str = showCount ? (includeType ? 'Array' : '') + '[' + len + ']' : (len < 1 ? '[]' : '');
 				break;
 
 			default:
@@ -556,11 +573,11 @@ function JSONTreeView(name_, value_, parent_, isRoot_){
 		var str = '', len;
 		if (type === 'object') {
 			len = Object.keys(value).length;
-			str = showCount ? 'Object[' + len + ']' : (len < 1 ? '{}' : '');
+			str = showCount ? (includeType ? 'Object' : '') + '[' + len + ']' : (len < 1 ? '{}' : '');
 		}
 		if (type === 'array') {
 			len = value.length;
-			str = showCount ? 'Array[' + len + ']' : (len < 1 ? '[]' : '');
+			str = showCount ? (includeType ? 'Array' : '') + '[' + len + ']' : (len < 1 ? '[]' : '');
 		}
 		dom.value.innerText = str;
 	}
