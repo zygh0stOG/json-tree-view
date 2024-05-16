@@ -7,6 +7,7 @@
     cursor: default;
     color: rgb(66, 66, 66);
     white-space: nowrap;
+    user-select: none;
     -webkit-user-select: none;
 }
 
