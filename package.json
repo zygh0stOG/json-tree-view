@@ -1,6 +1,7 @@
 {
   "name": "json-tree-view",
-  "version": "0.4.12",
+  "version": "0.4.15",
+  "license": "MIT",
   "description": "A JSON Tree View Component, for browsering or editing JSON object. Fork from json-view writing by Richard Livingston.",
   "files": [
     "JSONView.js",
@@ -10,16 +11,17 @@
   "main": "JSONView.js",
   "authors": [
     "Richard Livingston <richard.npm@logoapps.com>",
-    "Lu Yuan <luyuan.china@gmail.com>"
+    "Lu Yuan <luyuan.china@gmail.com>",
+    "Grant Cox <cox.grant.allen@gmail.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luyuan/json-tree-view.git"
+    "url": "git+https://github.com/zygh0stOG/json-tree-view.git"
   },
   "bugs": {
-    "url": "https://github.com/luyuan/json-tree-view/issues"
+    "url": "https://github.com/zygh0stOG/json-tree-view/issues"
   },
-  "homepage": "https://richard-livingston.github.io/json-view/",
+  "homepage": "https://zygh0stOG.github.io/json-view-tree/",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -35,3 +37,4 @@
     "tree"
   ]
 }
+
