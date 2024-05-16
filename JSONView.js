@@ -573,11 +573,27 @@ function JSONTreeView(name_, value_, parent_, isRoot_){
 		var str = '', len;
 		if (type === 'object') {
 			len = Object.keys(value).length;
-			str = showCount ? (includeType ? 'Object' : '') + '[' + len + ']' : (len < 1 ? '{}' : '');
+			if (showCount) {
+				str = '[' + len + ']'
+				if (includeType) {
+					str = 'Object' + str;
+				}
+			} else {
+				str = len < 1 ? '{}' : '';
+			}
+			//str = showCount ? (includeType ? 'Object' : '') + '[' + len + ']' : (len < 1 ? '{}' : '');
 		}
 		if (type === 'array') {
 			len = value.length;
-			str = showCount ? (includeType ? 'Array' : '') + '[' + len + ']' : (len < 1 ? '[]' : '');
+			if (showCount) {
+				str = '[' + len + ']'
+				if (includeType) {
+					str = 'Array' + str;
+				}
+			} else {
+				str = len < 1 ? '[]' : '';
+			}
+			//str = showCount ? (includeType ? 'Array' : '') + '[' + len + ']' : (len < 1 ? '[]' : '');
 		}
 		dom.value.innerText = str;
 	}
