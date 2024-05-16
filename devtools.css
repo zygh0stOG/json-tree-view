@@ -69,6 +69,11 @@
     cursor: pointer;
 }
 
+.jsonView>.expand:hover, jsonView>.collapse:hover{
+    color: rgb(196, 26, 22);
+    cursor: crosshair;
+}
+
 .jsonView>.expand:before{
     content: '\25B6';
 }
