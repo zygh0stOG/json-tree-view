@@ -78,6 +78,10 @@ document.getElementById('ro').addEventListener('change', function() {
 });
 document.getElementById('sc').addEventListener('change', function () {
     view.showCountOfObjectOrArray = !!this.checked;
+    document.getElementById('it').disabled = !!this.checked;
+});
+document.getElementById('it').addEventListener('change', function () {
+    view.includeTypeInCount = !!this.checked;
 });
 document.getElementById('wr').addEventListener('change', function () {
     view.withRootName = !!this.checked;
